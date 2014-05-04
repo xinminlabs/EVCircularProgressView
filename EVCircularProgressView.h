@@ -22,6 +22,15 @@
  
  */
 
+@class EVCircularProgressView;
+
+@protocol EVCircularProgressViewDelegate <NSObject>
+
+@optional
+- (void) circularProgressView:(EVCircularProgressView *)view touchEvent:(UIEvent *)event;
+
+@end
+
 @interface EVCircularProgressView : UIControl
 
 // A value from 0 to 1 that indicates how much progress has been made
@@ -33,6 +42,10 @@
 // On iOS 6, defaults to [UIColor blackColor]
 
 @property (nonatomic, strong) UIColor *progressTintColor;
+
+// Delegate to call
+
+@property (weak) id <EVCircularProgressViewDelegate> delegate;
 
 // Set the value of the progress property, optionally animating the change
 

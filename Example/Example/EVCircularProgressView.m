@@ -182,6 +182,9 @@
     // Ignore touches that occur before progress initiates
     
     if (self.progress > 0) {
+        if ([self.delegate respondsToSelector:@selector(circularProgressView:touchEvent:)]) {
+            [self.delegate circularProgressView:self touchEvent:event];
+        }
         [super sendAction:action to:target forEvent:event];
     }
 }
